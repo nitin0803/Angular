@@ -1,0 +1,8 @@
+<counter-output
+[output-input]="counterValue"
+></counter-output>
+
+<counter-buttons
+[button-input]="counterValue"
+(event)="SetValue($event)"
+></counter-buttons>

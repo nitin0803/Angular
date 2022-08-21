@@ -1,0 +1,13 @@
+<table>
+    <td *ngFor="let col of gridColumns">
+        {{col.Name}}
+    </td>
+    <tr *ngFor="let colObj of gridData">
+        <td *ngFor="let gridColumn of gridColumns">
+            {{colObj[gridColumn.Name]}}
+        </td>
+        <td>
+            <a (click)="SelectRow(colObj)" [routerLink]="['./']">Select</a>
+        </td>
+    </tr>
+</table>

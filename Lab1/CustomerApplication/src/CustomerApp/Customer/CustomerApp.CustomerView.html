@@ -1,0 +1,25 @@
+<form [formGroup]="customerModel.customerFormGroup">
+Customer Code: <input type="text" 
+                      formControlName="customerCodeControl"
+                      [(ngModel)] = "customerModel.CustomerCode"/><br/>
+Customer Name: <input type="text"
+                      formControlName="customerNameControl"
+                      [(ngModel)] = "customerModel.CustomerName"/><br/>
+Customer Amount: <input type="text"
+                        [ngModelOptions]="{standalone: true}"
+                        [(ngModel)] = "customerModel.CustomerAmount"/><br/>
+<input type="button" value="Add"
+       [disabled]="!customerModel.customerFormGroup.valid"
+       (click)="AddCustomer()"/><br/>
+<input type="button" value="Send To Server"
+       (click)="SendToServer()"/><br/>       
+</form>
+
+<div>{{customerModel.ShowFormErrors()}}</div>
+<br>
+<br>
+<grid-ui 
+[grid-columns]="columns" 
+[grid-data]="customerModels"
+(grid-selected)="SelectCustomer($event)">
+</grid-ui>

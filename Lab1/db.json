@@ -1,0 +1,37 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "CustomerCode": 1234,
+      "CustomerName": "Nitin Patil",
+      "CustomerAmount": 4500
+    },
+    {
+      "id": 2,
+      "CustomerCode": 4567,
+      "CustomerName": "Arhat Patil",
+      "CustomerAmount": 5500
+    },
+    {
+      "id": 1,
+      "CustomerCode": 7896,
+      "CustomerName": "Aaroh Patil",
+      "CustomerAmount": 4500
+    },
+    {
+      "code": "3232",
+      "name": "ewrwrwer",
+      "amount": "4333",
+      "id": 3
+    },
+    {
+      "code": "3232",
+      "name": "ewrwrwer",
+      "amount": "4333",
+      "id": 4
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
