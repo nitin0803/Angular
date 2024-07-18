@@ -1,0 +1,28 @@
+@import "@app/colors";
+@import "@app/mixins";
+
+$paddingSize : 10px;
+$homePageSize: 1000px;
+$imageSize: 200px;
+
+
+.app-home {
+	&__title {
+		text-align: center;
+	}
+
+	&__json-data-container {
+		background-color: $black;
+		color: $white;
+
+		@include breakpoint("xsmall") {
+			color: $neon-green;
+		}
+	}
+}
+
+.image-size {
+	width: $imageSize;
+	height: $imageSize;
+	padding: $paddingSize;
+}

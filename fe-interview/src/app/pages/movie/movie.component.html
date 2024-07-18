@@ -1,0 +1,18 @@
+<span>movie works</span>
+<span>{{movie}}</span>
+<div *ngrxLet="viewModel$ as viewModel">   
+    <span>{{viewModel}}</span> 
+    <div *ngIf="viewModel !== undefined">
+        <table>
+            @for(movie of viewModel; track movie) {	
+            <tr>
+                <td><img class="image-size" src={{movie.image.url}}></td>
+                <td>{{movie.title}}</td>
+                <td>{{movie.popularity}}</td>
+                <td>{{movie.budget}}</td>
+            </tr>
+        }
+        </table>
+    </div>
+
+</div>
