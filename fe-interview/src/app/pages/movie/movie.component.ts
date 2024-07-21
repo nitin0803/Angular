@@ -15,9 +15,10 @@ import { VisitedMovie } from 'src/app/shared/state/state.types';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MovieComponent implements OnInit{
+  movie: Movie | undefined;
 
-  movie: Movie | undefined
   constructor(private store: Store<AppState>, private router: ActivatedRoute) {}
+
   ngOnInit(): void {
     const slug = this.router.snapshot.paramMap.get('slug');
     this.store.select(selectMovie(slug!)).subscribe(movie => {

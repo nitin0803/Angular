@@ -6,25 +6,19 @@ import { Movie } from "../client/movie.model";
 
 const internalReducer = createReducer(
     initialState,
-    on(stateActions.loadAllMoviesSuccess, (state, action) => {
+    on(stateActions.loadMoviesSuccess, (state, action) => {
         return {
             ...state,
             allMovies: action.allMovies,
-            filteredMovies: action.allMovies,
+            filteredMovies: getFilteredMovies(action.allMovies, action.searchTerm, action.genres)
         };
     }),
-    on(stateActions.loadAllMoviesFailed, (state) => {
+    on(stateActions.loadMoviesFailed, (state) => {
         return {
             ...state,
             allMovies: [],
             filteredMovies: [],
             errorMessage: "Can not load movies data! Sorry,Please Try Again!"
-        }
-    }),
-    on(stateActions.filterMovies, (state, action) => {
-        return {
-            ...state,
-            filteredMovies: getFilteredMovies(state, action.searchTerm, action.genres)
         }
     }),
     on(stateActions.visitMovie, (state, action) => {
@@ -37,9 +31,8 @@ const internalReducer = createReducer(
     }),
 );
 
-function getFilteredMovies(state: MovieState, searchTerm: string, genres: string[]) {
+function getFilteredMovies(allMovies: Movie[], searchTerm: string, genres: string[]) {
     // no filtered movies
-    const allMovies = state.allMovies;
     if (searchTerm === '' && genres.length == 0) {
         return allMovies;
     }

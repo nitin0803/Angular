@@ -1,10 +1,9 @@
-<h1 class="app-home__title">Movies</h1>
+<h1 class="title">Movies</h1>
 
-
-<div  *ngrxLet="viewModel$ as viewModel">
-	<form [formGroup]="form">
-		<div class="filter-control">
-			<div class="row search-box">
+<div class="movies" *ngrxLet="viewModel$ as viewModel">
+	<div class="form-section">
+		<form [formGroup]="form">
+			<div>
 				<div class="input-group rounded">
 					<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
 						aria-describedby="search-addon" formControlName="searchText" />
@@ -13,19 +12,20 @@
 					</span>
 				</div>
 			</div>
-			<div>
-				<mat-form-field>
+			<div >
+				<mat-form-field class="genres-section">
 					<mat-label>Movie Genres</mat-label>
-					<mat-select formControlName="genres" multiple>
-						@for (genre of genresList; track genre) {
+					<mat-select #genresDropDown [formControl]="form.controls.genres" multiple>
+						<mat-option [value]='' (click)="toggleAllSelection()">All items</mat-option>
+						@for (genre of orderedGenres; track genre) {
 						<mat-option [value]="genre">{{genre}}</mat-option>
 						}
 					</mat-select>
 				</mat-form-field>
 			</div>
-		</div>
-	</form>
-	<div class="movies-div" *ngIf="viewModel.length>1">
+		</form>
+	</div>
+	<div class="movies-section" *ngIf="viewModel.length>1">
 		@for(movie of viewModel; track movie) {
 		<a [routerLink]=getMovieUrl(movie)>
 			<img class="image-size" src={{movie.image.url}} alt={{movie.slug}}>

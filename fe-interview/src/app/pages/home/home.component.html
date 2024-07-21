@@ -1,5 +1,6 @@
-<h1 class="app-home__title">Top 10 movies of all time</h1>
+
 <div class="home-div" *ngrxLet="viewModel$ as viewModel">
+	<h1 class="title">Top 10 movies of all time</h1>
 		@for(movie of viewModel; track movie) {			
 			<a [routerLink]=getMovieUrl(movie)>
 				<img class="image-size" src={{movie.image.url}} alt={{movie.slug}}>

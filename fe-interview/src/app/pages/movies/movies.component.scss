@@ -1,18 +1,27 @@
 @import "../pages.scss";
 
 
-.movies-div {
-	width: $pageWidth;
-	height: $pageHeight;
-	margin-left: 100px;
-	margin-top: 70px;
-	overflow: scroll;
+.title {
+	padding-top: 20px;
+	padding-left: 200px;
 }
 
-.filter-control {
+.movies {
 	display: flex;
+	width: $pageWidth + 300px;
+}
 
-	.search-box {
-		padding-left: 500px;
-	}
+.form-section {
+	margin-top: 100px;
+}
+
+.genres-section {
+	margin-top: 50px;
+}
+
+.movies-section {
+	width: $pageWidth;
+	height: $pageHeight;
+	margin-top: 30px;
+	overflow: scroll;
 }

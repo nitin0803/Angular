@@ -4,6 +4,7 @@ import { VisitedMovie } from '../state/state.types';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
 import { selectLastVisitedMovies } from '../state/state.selectors';
+import { getMovieUrl } from '../utils';
 
 @Component({
   selector: 'app-visits',
@@ -18,5 +19,10 @@ export class VisitsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.viewModel$ = this.store.select(selectLastVisitedMovies);
+  }
+
+
+  getMovieUrl(movie: VisitedMovie) {
+    return getMovieUrl(movie.slug);
   }
 }

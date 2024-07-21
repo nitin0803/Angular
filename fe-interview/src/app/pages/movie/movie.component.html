@@ -2,10 +2,10 @@
     <table>
         <tr>
             <td><img class="image-size" src={{movie.image.url}}></td>
-            <td>
+            <td class="movie-info">
         <tr>Title: {{movie.title}}</tr>
         <tr>Generes: {{movie.genres}}</tr>
-        <tr>Popularity: {{movie.popularity}}</tr>
+        <tr>Popularity: {{movie.popularity | number: '1.2-2'}}</tr>
         <tr>Budget: {{movie.budget | currency:'EUR'}}</tr>
         </td>
         </tr>

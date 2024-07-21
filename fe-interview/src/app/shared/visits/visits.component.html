@@ -1,13 +1,18 @@
-<div class="visited-movies">
-<h2 class="app-home__title">Last visited movies</h2>
 <div *ngrxLet="viewModel$ as viewModel">
-<ul>
-    @for(visitedMovie of viewModel; track visitedMovie) {
-    <li>
-        <img class="movie-image" src="{{visitedMovie.url}}">
-        <span>{{visitedMovie.title}}</span>
-    </li>
-    }
-</ul>
-</div>
+    <div class="visited-movies" *ngIf="viewModel !== undefined && viewModel.length>0">
+        <div>
+            <h2 class="app-home__title">Last visited movies</h2>
+        </div>
+        <div class="visited-movies-list">
+
+            @for(visitedMovie of viewModel; track visitedMovie) {
+            <li>
+                <a [routerLink]=getMovieUrl(visitedMovie)>
+                    <img class="movie-image" src="{{visitedMovie.url}}">
+                    <span>{{visitedMovie.title}}</span>
+                </a>
+            </li>
+            }
+        </div>
+    </div>
 </div>

@@ -6,12 +6,9 @@ export const stateActions = createActionGroup({
     source: 'Movies Mini Application',
     events:
     {
-        loadAllMovies: emptyProps(),
-        loadAllMoviesSuccess: props<{ allMovies: Movie[] }>(),
-        loadAllMoviesFailed: emptyProps(),
-        loadTop10Movies: emptyProps(),
-        loadTop10MoviesSuccess: props<{ topMovies: Movie[] }>(),
-        filterMovies: props<{ searchTerm: string, genres: string[] }>(),
+        loadMovies: props<{ searchTerm: string, genres: string[] }>(),
+        loadMoviesSuccess: props<{ allMovies: Movie[], searchTerm: string, genres: string[] }>(),
+        loadMoviesFailed: emptyProps(),
         visitMovie: props<{ visitedMovie: VisitedMovie }>(),
         visitMovieSuccess: props<{ visitedMovies: VisitedMovie[] }>(),
     },
