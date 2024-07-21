@@ -4,7 +4,8 @@
 <ul>
     @for(visitedMovie of viewModel; track visitedMovie) {
     <li>
-        {{visitedMovie.title}}
+        <img class="movie-image" src="{{visitedMovie.url}}">
+        <span>{{visitedMovie.title}}</span>
     </li>
     }
 </ul>

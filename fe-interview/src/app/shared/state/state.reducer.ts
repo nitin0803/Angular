@@ -1,6 +1,7 @@
 import { Action, createReducer, on } from "@ngrx/store";
 import { MovieState, initialState } from "./state.types";
 import { stateActions } from "./state.actions";
+import { Movie } from "../client/movie.model";
 
 
 const internalReducer = createReducer(
@@ -36,21 +37,37 @@ const internalReducer = createReducer(
     }),
 );
 
-function getFilteredMovies(state: MovieState, searchTerm: string, genres: string[] ) {
+function getFilteredMovies(state: MovieState, searchTerm: string, genres: string[]) {
+    // no filtered movies
+    const allMovies = state.allMovies;
     if (searchTerm === '' && genres.length == 0) {
-        return state.allMovies;
+        return allMovies;
     }
+
     if (searchTerm !== '' && genres.length == 0) {
-        return state.allMovies.filter(movie => movie.slug.includes(searchTerm))
+        return filterMoviesBySearchTerm(allMovies, searchTerm);
     }
+
     if (searchTerm === '' && genres.length > 0) {
-        return state.allMovies.filter(movie => {
-            movie.genres.forEach(mg => {
-                return genres.includes(mg)
-            })
-        })
+        return filterMoviesByGenres(allMovies, genres);
     }
-   return state.allMovies;
+
+    // filtered by searchTerm and genres
+    return filterMoviesBySearchTermAndGenres(allMovies, searchTerm, genres);
+}
+
+function filterMoviesBySearchTerm(allMovies: Movie[], searchTerm: string) {
+    return allMovies.filter(movie => movie.slug.includes(searchTerm))
+}
+
+function filterMoviesByGenres(allMovies: Movie[], genres: string[]) {
+    return allMovies.filter(movie =>
+        (movie.genres.filter(mg => genres.includes(mg))).length > 0
+    )
+}
+
+function filterMoviesBySearchTermAndGenres(allMovies: Movie[], searchTerm: string, genres: string[]) {
+    return filterMoviesByGenres(filterMoviesBySearchTerm(allMovies, searchTerm), genres);
 }
 
 export function moviesReducer(state: MovieState | undefined, action: Action) {

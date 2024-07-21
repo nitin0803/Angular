@@ -28,6 +28,7 @@ export class MovieComponent implements OnInit{
       const visitedMovie: VisitedMovie = {
         title: movie.title,
         slug: movie.slug,
+        url: movie.image.url,
         visitedTime: new Date()
       }
       this.store.dispatch(stateActions.visitMovie({ visitedMovie }));

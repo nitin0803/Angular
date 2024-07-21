@@ -4,6 +4,7 @@ import { Movie } from "../client/movie.model";
 export interface VisitedMovie {
     title: string;
     slug: string;
+    url: string;
     visitedTime: Date;
 }
 
