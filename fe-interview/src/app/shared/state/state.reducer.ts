@@ -21,12 +21,19 @@ const internalReducer = createReducer(
             errorMessage: "Can not load movies data! Sorry,Please Try Again!"
         }
     }),
-    on(stateActions.visitMovie, (state, action) => {
-        let visitedMovies = [...state.visitedMovies].filter(m => m.slug !== action.visitedMovie.slug);
-        visitedMovies.push(action.visitedMovie);
+    on(stateActions.loadMovieSuccess, (state, action) => {
+        const visitedMovie = action.allMovies.find(am => am.slug === action.slug) ?? undefined;
+        let visitedMovies = [...state.visitedMovies];
+        if (visitedMovie !== undefined) {
+            let updatedVisitedMovies = [...state.visitedMovies].filter(vm => vm.movie.slug !== action.slug);
+            updatedVisitedMovies.push( { movie: visitedMovie, visitedTime: new Date()});
+            visitedMovies = updatedVisitedMovies;
+        }
         return {
             ...state,
-            visitedMovies
+            allMovies: action.allMovies,
+            visitedMovie,
+            visitedMovies,
         }
     }),
 );

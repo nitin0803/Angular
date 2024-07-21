@@ -39,35 +39,9 @@ export class MoviesComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.fillGenresList();
 		this.filterMoviesByQueryParams();
-
-		this.form.controls.searchText.valueChanges.pipe(
-			map(value => value?.trim() ?? ''),
-			distinctUntilChanged(),
-			debounceTime(500),
-			map(searchTerm => searchTerm)
-		).subscribe(searchTerm => {
-			this.dispatchFilterAction(searchTerm, this.form.controls.genres.value);
-			this.updateRouteParameters();
-		})
-
-		this.form.controls.genres.valueChanges
-			.subscribe(genres => {
-				this.dispatchFilterAction(this.form.controls.searchText.value, genres);
-				this.updateRouteParameters();
-			})
-
-		this.store.select(selectFilteredMovies)
-			.subscribe(fms => {
-				this.genresList = [];
-				fms.forEach(fm => {
-					fm.genres.forEach(g => {
-						if (!this.genresList.includes(g)) {
-							this.genresList.push(g)
-						}
-					});
-				});
-			})
+		this.detectFormValueChanges();
 	}
 
 	get orderedGenres() {
@@ -78,6 +52,20 @@ export class MoviesComponent implements OnInit {
 		return getMovieUrl(movie.slug);
 	}
 
+	fillGenresList() {
+		this.store.select(selectFilteredMovies)
+			.subscribe(fms => {
+				this.genresList = [];
+				fms.forEach(fm => {
+					fm.genres.forEach(g => {
+						if (!this.genresList.includes(g)) {
+							this.genresList.push(g);
+						}
+					});
+				});
+			});
+	}
+
 	toggleAllSelection() {
 		this.allSelected = !this.allSelected;  // to control select-unselect
 
@@ -86,6 +74,40 @@ export class MoviesComponent implements OnInit {
 		} else {
 			this.genresDropDown!.options.forEach((item: MatOption) => { item.deselect() });
 		}
+	}
+
+	filterMoviesByQueryParams() {
+		const searchText = this.route.snapshot.queryParamMap.get('searchTerm') ?? '';
+		const genres = this.route.snapshot.queryParamMap.get('genres')?.split(',') ?? [];
+
+		this.form.patchValue({
+			searchText,
+			genres
+		})
+
+		this.dispatchFilterAction(searchText, genres);
+	}
+
+	detectFormValueChanges() {
+		this.form.controls.searchText.valueChanges.pipe(
+			map(value => value?.trim() ?? ''),
+			distinctUntilChanged(),
+			debounceTime(500),
+			map(searchTerm => searchTerm)
+		).subscribe(searchTerm => {
+			this.dispatchFilterAction(searchTerm, this.form.controls.genres.value);
+			this.updateRouteParameters();
+		});
+
+		this.form.controls.genres.valueChanges
+			.subscribe(genres => {
+				this.dispatchFilterAction(this.form.controls.searchText.value, genres);
+				this.updateRouteParameters();
+			});
+	}
+
+	dispatchFilterAction(searchTerm: string, genres: string[]) {
+		this.store.dispatch(stateActions.loadMovies({ searchTerm, genres }));
 	}
 
 	updateRouteParameters() {
@@ -101,21 +123,5 @@ export class MoviesComponent implements OnInit {
 		})
 
 		this.location.go(urlATree.toString())
-	}
-
-	filterMoviesByQueryParams() {
-		const searchText = this.route.snapshot.queryParamMap.get('searchTerm') ?? '';
-		const genres = this.route.snapshot.queryParamMap.get('genres')?.split(',') ?? [];
-
-		this.form.patchValue({
-			searchText,
-			genres
-		})
-
-		this.dispatchFilterAction(searchText, genres);
-	}
-
-	dispatchFilterAction(searchTerm: string, genres: string[]) {
-		this.store.dispatch(stateActions.loadMovies({ searchTerm, genres }));
 	}
 }

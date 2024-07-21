@@ -22,7 +22,7 @@ export class VisitsComponent implements OnInit {
   }
 
 
-  getMovieUrl(movie: VisitedMovie) {
-    return getMovieUrl(movie.slug);
+  getMovieUrl(visitedMovie: VisitedMovie) {
+    return getMovieUrl(visitedMovie.movie.slug);
   }
 }

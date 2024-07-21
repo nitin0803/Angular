@@ -16,9 +16,9 @@ export const selectTop10Movies = createSelector(
     (movies) => movies.slice().sort((a, b) => b.popularity > a.popularity ? 1: -1).slice(0,10)
 );
 
-export const selectMovie = (slug: string) => createSelector(
-    selectAllMovies,
-    (allMovies) => allMovies.find(am => am.slug ===  slug)
+export const selectMovie = createSelector(
+    getMovieState,
+    (state) => state.visitedMovie
 );
 
 export const selectLastVisitedMovies = createSelector(

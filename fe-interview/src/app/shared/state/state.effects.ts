@@ -35,15 +35,22 @@ export class StateEffects {
         );
     });
 
-    // visitMovie$ = createEffect(() => {
-    //     return this.actions$.pipe(
-    //         ofType(stateActions.visitMovie),
-    //         exhaustMap(action => {
-    //             return this.movieService.saveLastVisitedMovie(action.visitedMovie)
-    //             .pipe(
-    //                 map((visitedMovies) => stateActions.visitMovieSuccess({ visitedMovies }))
-    //             );
-    //         })
-    //     );
-    // })
+    loadMovie$ = createEffect(() => {
+        return this.actions$.pipe(
+            ofType(stateActions.loadMovie),
+            concatLatestFrom(() => this.store.select(selectAllMovies)),
+            mergeMap(([{ slug }, allMovies]) => {
+                return allMovies.length > 0
+                    ? of(allMovies)
+                        .pipe(map((existingMoviesData) => stateActions.loadMovieSuccess({ allMovies: existingMoviesData, slug })),
+                            catchError(() => EMPTY))
+                    :
+                    this.movieService.getAllMovies()
+                        .pipe(
+                            map((apiMoviesData) => stateActions.loadMovieSuccess({ allMovies: apiMoviesData, slug })),
+                            catchError(() => of(stateActions.loadMoviesFailed()))
+                        );
+            })
+        );
+    });
 }

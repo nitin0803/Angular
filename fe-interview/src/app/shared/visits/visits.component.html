@@ -1,15 +1,15 @@
-<div *ngrxLet="viewModel$ as viewModel">
-    <div class="visited-movies" *ngIf="viewModel !== undefined && viewModel.length>0">
+<div *ngrxLet="viewModel$ as visitedMovies">
+    <div class="visited-movies" *ngIf="visitedMovies !== undefined && visitedMovies.length>0">
         <div>
-            <h2 class="app-home__title">Last visited movies</h2>
+            <h2 class="title">Last visited movies</h2>
         </div>
         <div class="visited-movies-list">
 
-            @for(visitedMovie of viewModel; track visitedMovie) {
+            @for(visitedMovie of visitedMovies; track visitedMovie) {
             <li>
                 <a [routerLink]=getMovieUrl(visitedMovie)>
-                    <img class="movie-image" src="{{visitedMovie.url}}">
-                    <span>{{visitedMovie.title}}</span>
+                    <img class="movie-image" src="{{visitedMovie.movie.image.url}}">
+                    <span>{{visitedMovie.movie.title}}</span>
                 </a>
             </li>
             }

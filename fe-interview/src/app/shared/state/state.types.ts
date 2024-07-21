@@ -2,22 +2,22 @@ import { Movie } from "../client/movie.model";
 
 
 export interface VisitedMovie {
-    title: string;
-    slug: string;
-    url: string;
+    movie: Movie,
     visitedTime: Date;
 }
 
 export interface MovieState {
-    filteredMovies: Movie[],
     allMovies: Movie[],
+    filteredMovies: Movie[],
+    visitedMovie: Movie | undefined,
     visitedMovies: VisitedMovie[];
     errorMessage: string | null,
 }
 
 export const initialState: MovieState = {
-    filteredMovies: [],
     allMovies: [],
+    filteredMovies: [],
+    visitedMovie: undefined,
     visitedMovies: [],
     errorMessage: null,
 }
