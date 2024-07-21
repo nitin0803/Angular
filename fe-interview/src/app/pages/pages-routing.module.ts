@@ -13,7 +13,7 @@ const routes: Routes = [
 		path: 'movies', component: MoviesComponent
 	},
 	{
-		path: 'movie', component: MovieComponent
+		path: 'movie/:slug', component: MovieComponent
 	}
 ];
 

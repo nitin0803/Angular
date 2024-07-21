@@ -4,23 +4,26 @@ import { MovieState } from "./state.types";
 const getMovieState = createFeatureSelector<MovieState>('movieState');
 
 export const selectAllMovies = createSelector(getMovieState, (state) => {
-    return state.movies;
+    return state.allMovies;
+});
+
+export const selectFilteredMovies = createSelector(getMovieState, (state) => {
+    return state.filteredMovies;
 });
 
 export const selectTop10Movies = createSelector(
     selectAllMovies,
-    (movies) => {
-        console.log('selectTop10Movies = ', movies.length);
-        return movies.slice().sort((a, b) => b.popularity > a.popularity ? 1: -1).slice(0,10)
-    }
+    (movies) => movies.slice().sort((a, b) => b.popularity > a.popularity ? 1: -1).slice(0,10)
 );
 
-export const selectMovie = createSelector(
+export const selectMovie = (slug: string) => createSelector(
     selectAllMovies,
-    (movies) => {
-        console.log('param = ', movies.length);
-        return movies;
-    }
+    (allMovies) => allMovies.find(am => am.slug ===  slug)
+);
+
+export const selectLastVisitedMovies = createSelector(
+    getMovieState,
+    (state) => state.visitedMovies.slice().sort((a, b) => b.visitedTime > a.visitedTime ? 1 : -1).slice(0, 5)
 );
 
 export const selectErrorMessage = createSelector(

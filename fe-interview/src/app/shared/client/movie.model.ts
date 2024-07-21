@@ -3,14 +3,14 @@ export interface Movie {
 	title: string;
 	popularity: number;
 	slug: string;
-	runtime: number;
+	runtime: string;
 	released: string;
-	image: image;
+	image: Image;
 	genres: string[];
 	budget: number;
 }
 
-export interface image {
+export interface Image {
 	url: string;
 	title: string;
 }

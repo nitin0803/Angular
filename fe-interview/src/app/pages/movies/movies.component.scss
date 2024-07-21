@@ -2,7 +2,17 @@
 
 
 .movies-div {
-	width: $homePageSize;
-	height: $homePageSize;
+	width: $pageWidth;
+	height: $pageHeight;
 	margin-left: 100px;
+	margin-top: 70px;
+	overflow: scroll;
+}
+
+.filter-control {
+	display: flex;
+
+	.search-box {
+		padding-left: 500px;
+	}
 }

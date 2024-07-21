@@ -1,0 +1,12 @@
+<div class="visited-movies">
+<h2 class="app-home__title">Last visited movies</h2>
+<div *ngrxLet="viewModel$ as viewModel">
+<ul>
+    @for(visitedMovie of viewModel; track visitedMovie) {
+    <li>
+        {{visitedMovie.title}}
+    </li>
+    }
+</ul>
+</div>
+</div>

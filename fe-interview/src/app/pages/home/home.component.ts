@@ -1,8 +1,7 @@
-import { Component, ChangeDetectionStrategy, OnInit, OnChanges, SimpleChanges, AfterViewInit } from "@angular/core";
-import { Observable } from "rxjs";
+import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 import { Store } from "@ngrx/store";
-import { MovieState } from "src/app/shared/state/state.types";
+import { VisitedMovie } from "src/app/shared/state/state.types";
 import { selectTop10Movies } from "src/app/shared/state/state.selectors";
 import { Movie } from "src/app/shared";
 import { stateActions } from "src/app/shared/state/state.actions";
@@ -28,6 +27,6 @@ export class HomeComponent{
 	}
 
 	getMovieUrl(movie: Movie) {
-		return '/movie?slug=the-shawshank-redemption';
+		return `/movie/${movie.slug}`;
 	}
 }

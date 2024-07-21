@@ -14,12 +14,23 @@ export class StateEffects {
             ofType(stateActions.loadAllMovies, stateActions.loadTop10Movies),
             exhaustMap(() => {
                 return this.movieService.getAllMovies()
-                .pipe(
-                    map((data) => stateActions.loadAllMoviesSuccess({allMovies: data})
-                ),
-                catchError(() => of(stateActions.loadAllMoviesFailed()))
-                );
+                    .pipe(
+                        map((data) => stateActions.loadAllMoviesSuccess({ allMovies: data })),
+                        catchError(() => of(stateActions.loadAllMoviesFailed()))
+                    );
             })
         );
     });
+
+    // visitMovie$ = createEffect(() => {
+    //     return this.actions$.pipe(
+    //         ofType(stateActions.visitMovie),
+    //         exhaustMap(action => {
+    //             return this.movieService.saveLastVisitedMovie(action.visitedMovie)
+    //             .pipe(
+    //                 map((visitedMovies) => stateActions.visitMovieSuccess({ visitedMovies }))
+    //             );
+    //         })
+    //     );
+    // })
 }
