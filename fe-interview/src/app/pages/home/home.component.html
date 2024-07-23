@@ -1,9 +1,9 @@
 
-<div class="home-div" *ngrxLet="viewModel$ as movies">
-	<h1 class="title">Top 10 movies of all time</h1>
-		@for(movie of movies; track movie) {			
-			<a [routerLink]=getMovieUrl(movie)>
-				<img class="image-size" src={{movie.image.url}} alt={{movie.slug}}>
-		</a>	
-		}
+<div class="container-fluid home-div" *ngrxLet="viewModel$ as movies">
+	<h1 class="mt-4 text-center">Top 10 movies of all time</h1>
+	@for(movie of movies; track movie) {
+	<a [routerLink]=getMovieUrl(movie)>
+		<img class="image-size" src={{movie.image.url}} alt={{movie.slug}}>
+	</a>
+	}
 </div>
