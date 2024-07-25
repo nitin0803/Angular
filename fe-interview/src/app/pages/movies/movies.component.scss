@@ -6,9 +6,15 @@
 	padding-left: 200px;
 }
 
+.movie-div {
+	width: $pageWidth;
+	height: $pageHeight - 200px;
+	margin-left: 100px;
+}
+
 .movies {
 	display: flex;
-	width: $pageWidth + 300px;
+	width: $pageWidth;
 }
 
 .form-section {
@@ -21,7 +27,7 @@
 
 .movies-section {
 	width: $pageWidth;
-	height: $pageHeight;
+	height: $pageHeight - 200px;
 	margin-top: 30px;
 	overflow: scroll;
 }

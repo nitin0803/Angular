@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { map, distinctUntilChanged, debounceTime } from 'rxjs';
 import { Movie } from 'src/app/shared';
 import { stateActions } from 'src/app/shared/state/state.actions';
-import { selectFilteredMovies } from 'src/app/shared/state/state.selectors';
+import { selectErrorMessage, selectFilteredMovies, selectMovieState } from 'src/app/shared/state/state.selectors';
 import { MovieState } from 'src/app/shared/state/state.types';
 import { MoviesForm } from './movies.component.types';
 import { MatOption, MatSelect } from '@angular/material/select';
@@ -19,7 +19,9 @@ import { getMovieUrl } from 'src/app/shared/utils';
 	changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MoviesComponent implements OnInit {
-	viewModel$ = this.store.select(selectFilteredMovies);
+	movies$ = this.store.select(selectFilteredMovies);
+	errorMessage$ = this.store.select(selectErrorMessage);
+
 	readonly form: FormGroup<MoviesForm>;
 	genresList: string[];
 	@ViewChild('genresDropDown') genresDropDown: MatSelect | undefined;

@@ -1,14 +1,19 @@
 import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { MovieState } from "./state.types";
 
-const getMovieState = createFeatureSelector<MovieState>('movieState');
+export const selectMovieState = createFeatureSelector<MovieState>('movieState');
 
-export const selectAllMovies = createSelector(getMovieState, (state) => {
+export const selectAllMovies = createSelector(selectMovieState, (state) => {
     return state.allMovies;
 });
 
-export const selectFilteredMovies = createSelector(getMovieState, (state) => {
+export const selectFilteredMovies = createSelector(selectMovieState, (state) => {
     return state.filteredMovies;
+});
+
+
+export const selectErrorMessage = createSelector(selectMovieState, (state) => {
+    return state.errorMessage;
 });
 
 export const selectTop10Movies = createSelector(
@@ -17,18 +22,11 @@ export const selectTop10Movies = createSelector(
 );
 
 export const selectMovie = createSelector(
-    getMovieState,
+    selectMovieState,
     (state) => state.visitedMovie
 );
 
 export const selectLastVisitedMovies = createSelector(
-    getMovieState,
+    selectMovieState,
     (state) => state.visitedMovies.slice().sort((a, b) => b.visitedTime > a.visitedTime ? 1 : -1).slice(0, 5)
 );
-
-export const selectErrorMessage = createSelector(
-    getMovieState,
-    (state) => {
-        return state.errorMessage
-    }
-)

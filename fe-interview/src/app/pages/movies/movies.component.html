@@ -1,35 +1,46 @@
-<h1 class="title">Movies</h1>
+<h1 class="mt-4 text-center">Movies</h1>
+<div class="container-fluid" *ngrxLet="errorMessage$ as errorMessage">
+	@if(errorMessage)
+	{
+	<div class="alert alert-danger text-center" role="alert">{{errorMessage}}</div>
+	}
+</div>
 
-<div class="movies" *ngrxLet="viewModel$ as movies">
-	<div class="form-section">
-		<form [formGroup]="form">
-			<div>
-				<div class="input-group rounded">
-					<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-						aria-describedby="search-addon" formControlName="searchText" />
-					<span class="input-group-text border-0" id="search-addon">
-						<i class="fas fa-search"></i>
-					</span>
+<div class="movie-div" *ngrxLet="movies$ as movies">
+	@if(movies.length>0)
+	{
+	<div class="movies">
+		<div class="form-section">
+			<form [formGroup]="form">
+				<div>
+					<div class="input-group rounded">
+						<input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
+							aria-describedby="search-addon" formControlName="searchText" />
+						<span class="input-group-text border-0" id="search-addon">
+							<i class="fas fa-search"></i>
+						</span>
+					</div>
 				</div>
-			</div>
-			<div >
-				<mat-form-field class="genres-section">
-					<mat-label>Movie Genres</mat-label>
-					<mat-select #genresDropDown [formControl]="form.controls.genres" multiple>
-						<mat-option [value]='' (click)="toggleAllSelection()">All items</mat-option>
-						@for (genre of orderedGenres; track genre) {
-						<mat-option [value]="genre">{{genre}}</mat-option>
-						}
-					</mat-select>
-				</mat-form-field>
-			</div>
-		</form>
+				<div>
+					<mat-form-field class="genres-section" appearance="outline">
+						<mat-label>Movie Genres</mat-label>
+						<mat-select #genresDropDown [formControl]="form.controls.genres" multiple>
+							<mat-option [value]='' (click)="toggleAllSelection()">All items</mat-option>
+							@for (genre of orderedGenres; track genre) {
+							<mat-option [value]="genre">{{genre}}</mat-option>
+							}
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</form>
+		</div>
+		<div class="movies-section" *ngIf="movies.length>1">
+			@for(movie of movies; track movie) {
+			<a [routerLink]=getMovieUrl(movie)>
+				<img class="image-size" src={{movie.image.url}} alt={{movie.slug}}>
+			</a>
+			}
+		</div>
 	</div>
-	<div class="movies-section" *ngIf="movies.length>1">
-		@for(movie of movies; track movie) {
-		<a [routerLink]=getMovieUrl(movie)>
-			<img class="image-size" src={{movie.image.url}} alt={{movie.slug}}>
-		</a>
-		}
-	</div>
+	}
 </div>

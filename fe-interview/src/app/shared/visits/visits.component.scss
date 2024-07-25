@@ -1,13 +1,12 @@
 .title {
-    padding-top: 20px;
-    padding-left: 100px;
-    padding-right: 20px;
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-right: 20px;
 }
 
 .visited-movies {
     display: flex;
-    padding-top: 7%;
-    padding-left: 500px;
+    margin-top: 2%;
 }
 
 .visited-movies-list {
@@ -18,10 +17,10 @@
 .movie-image {
     width: 80px;
     height: 80px;
-    padding: 10px;
+    margin: 10px;
 }
 
 span {
     font-size: large;
-    padding-left: 10px;
+    margin-left: 10px;
 }

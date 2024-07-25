@@ -2,8 +2,8 @@
 @import "../pages.scss";
 
 .home-div {
-	width: $pageWidth+50px;
-	height: $pageHeight;
+	width: $pageWidth;
+	height: $pageHeight -200px;
 	margin-left: 100px;
 }
 
