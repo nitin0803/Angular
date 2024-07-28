@@ -1,24 +1,24 @@
-<div *ngrxLet="viewModel$ as movie">
-    <div class="movie-table" *ngIf="movie !== undefined">
+<div *ngrxLet="viewModel$ as visitedMovie">
+    <div class="movie-table" *ngIf="visitedMovie !== undefined">
         <table>
             <tr>
-                <td><img class="image-size" src={{movie.image.url}}></td>
+                <td><img class="image-size" src={{visitedMovie.movie.image.url}}></td>
                 <td class="movie-info">
             <tr>
                 <td class="key">Title:</td>
-                <td class="value">{{movie.title}}</td>
+                <td class="value">{{visitedMovie.movie.title}}</td>
             </tr>
             <tr>
                 <td class="key">Generes:</td>
-                <td class="value">{{movie.genres}}</td>
+                <td class="value">{{visitedMovie.movie.genres}}</td>
             </tr>
             <tr>
                 <td class="key">Popularity:</td>
-                <td class="value">{{movie.popularity | number: '1.2-2'}}</td>
+                <td class="value">{{visitedMovie.movie.popularity | number: '1.2-2'}}</td>
             </tr>
             <tr>
                 <td class="key">Budget:</td>
-                <td class="value">{{movie.budget | currency:'EUR'}}</td>
+                <td class="value">{{visitedMovie.movie.budget | currency:'EUR'}}</td>
             </tr>
             </td>
             </tr>

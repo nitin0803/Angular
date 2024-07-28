@@ -11,17 +11,16 @@ export const selectFilteredMovies = createSelector(selectMovieState, (state) => 
     return state.filteredMovies;
 });
 
-
-export const selectErrorMessage = createSelector(selectMovieState, (state) => {
-    return state.errorMessage;
+export const selectLoadMoviesErrorMessage = createSelector(selectMovieState, (state) => {
+    return state.loadMoviesErrorMessage;
 });
 
 export const selectTop10Movies = createSelector(
     selectAllMovies,
-    (movies) => movies.slice().sort((a, b) => b.popularity > a.popularity ? 1: -1).slice(0,10)
+    (movies) => movies.slice().sort((a, b) => b.popularity > a.popularity ? 1 : -1).slice(0, 10)
 );
 
-export const selectMovie = createSelector(
+export const selectVisitedMovie = createSelector(
     selectMovieState,
     (state) => state.visitedMovie
 );
@@ -30,3 +29,7 @@ export const selectLastVisitedMovies = createSelector(
     selectMovieState,
     (state) => state.visitedMovies.slice().sort((a, b) => b.visitedTime > a.visitedTime ? 1 : -1).slice(0, 5)
 );
+
+export const selectLoadVisitedMoviesErrorMesssage = createSelector(selectMovieState, (state) => {
+    return state.loadVisitedMoviesErrorMesssage;
+});

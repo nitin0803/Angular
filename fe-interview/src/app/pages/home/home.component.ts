@@ -1,7 +1,7 @@
 import { Component, ChangeDetectionStrategy } from "@angular/core";
 
 import { Store } from "@ngrx/store";
-import { selectErrorMessage, selectTop10Movies } from "src/app/shared/state/state.selectors";
+import { selectLoadMoviesErrorMessage, selectTop10Movies } from "src/app/shared/state/state.selectors";
 import { Movie } from "src/app/shared";
 import { stateActions } from "src/app/shared/state/state.actions";
 import { AppState } from "src/app/shared/state/app.state";
@@ -15,7 +15,7 @@ import { getMovieUrl } from "src/app/shared/utils";
 export class HomeComponent {
 
 	viewModel$ = this.store.select(selectTop10Movies);
-	errorMessage$ = this.store.select(selectErrorMessage);
+	errorMessage$ = this.store.select(selectLoadMoviesErrorMessage);
 
 	constructor(private store: Store<AppState>) {
 	}

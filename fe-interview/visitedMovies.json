@@ -1,0 +1,240 @@
+{
+  "visitedMovies": [
+    {
+      "id": "72b3",
+      "movie": {
+        "id": "tt0468569",
+        "title": "The Dark Knight",
+        "popularity": "9.1",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+          "title": "The Dark Knight"
+        },
+        "slug": "the-dark-knight",
+        "runtime": "152 min",
+        "released": "18 Jul 2008",
+        "genres": [
+          "Action",
+          "Crime",
+          "Drama"
+        ],
+        "budget": 534987076
+      },
+      "visitedTime": "2024-07-28T12:41:00.396Z"
+    },
+    {
+      "id": "a24f",
+      "movie": {
+        "id": "tt0071562",
+        "title": "The Godfather: Part II",
+        "popularity": "9.0",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BMWMwMGQzZTItY2JlNC00OWZiLWIyMDctNDk2ZDQ2YjRjMWQ0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+          "title": "The Godfather: Part II"
+        },
+        "slug": "the-godfather-part-ii",
+        "runtime": "202 min",
+        "released": "18 Dec 1974",
+        "genres": [
+          "Crime",
+          "Drama"
+        ],
+        "budget": 47834595
+      },
+      "visitedTime": "2024-07-28T12:41:06.715Z"
+    },
+    {
+      "id": "dfb0",
+      "movie": {
+        "id": "tt0167260",
+        "title": "The Lord of the Rings: The Return of the King",
+        "popularity": "9.0",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+          "title": "The Lord of the Rings: The Return of the King"
+        },
+        "slug": "the-lord-of-the-rings-the-return-of-the-king",
+        "runtime": "201 min",
+        "released": "17 Dec 2003",
+        "genres": [
+          "Action",
+          "Adventure",
+          "Drama"
+        ],
+        "budget": 378251207
+      },
+      "visitedTime": "2024-07-28T12:41:16.001Z"
+    },
+    {
+      "id": "cd21",
+      "movie": {
+        "id": "tt0120737",
+        "title": "The Lord of the Rings: The Fellowship of the Ring",
+        "popularity": "8.8",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BN2EyZjM3NzUtNWUzMi00MTgxLWI0NTctMzY4M2VlOTdjZWRiXkEyXkFqcGdeQXVyNDUzOTQ5MjY@._V1_SX300.jpg",
+          "title": "The Lord of the Rings: The Fellowship of the Ring"
+        },
+        "slug": "the-lord-of-the-rings-the-fellowship-of-the-ring",
+        "runtime": "178 min",
+        "released": "19 Dec 2001",
+        "genres": [
+          "Action",
+          "Adventure",
+          "Drama"
+        ],
+        "budget": 316115420
+      },
+      "visitedTime": "2024-07-28T12:41:30.216Z"
+    },
+    {
+      "id": "fa6d",
+      "movie": {
+        "id": "tt0068646",
+        "title": "The Godfather",
+        "popularity": "9.2",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+          "title": "The Godfather"
+        },
+        "slug": "the-godfather",
+        "runtime": "175 min",
+        "released": "24 Mar 1972",
+        "genres": [
+          "Crime",
+          "Drama"
+        ],
+        "budget": 136381073
+      },
+      "visitedTime": "2024-07-28T12:41:53.270Z"
+    },
+    {
+      "id": "9174",
+      "movie": {
+        "id": "tt0110912",
+        "title": "Pulp Fiction",
+        "popularity": "8.9",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+          "title": "Pulp Fiction"
+        },
+        "slug": "pulp-fiction",
+        "runtime": "154 min",
+        "released": "14 Oct 1994",
+        "genres": [
+          "Crime",
+          "Drama"
+        ],
+        "budget": 107928762
+      },
+      "visitedTime": "2024-07-28T12:43:23.145Z"
+    },
+    {
+      "id": "73a5",
+      "movie": {
+        "id": "tt0167260",
+        "title": "The Lord of the Rings: The Return of the King",
+        "popularity": "9.0",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWZlMTY3XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+          "title": "The Lord of the Rings: The Return of the King"
+        },
+        "slug": "the-lord-of-the-rings-the-return-of-the-king",
+        "runtime": "201 min",
+        "released": "17 Dec 2003",
+        "genres": [
+          "Action",
+          "Adventure",
+          "Drama"
+        ],
+        "budget": 378251207
+      },
+      "visitedTime": "2024-07-28T12:47:47.437Z"
+    },
+    {
+      "id": "ffb5",
+      "movie": {
+        "id": "tt0137523",
+        "title": "Fight Club",
+        "popularity": "8.8",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BNDIzNDU0YzEtYzE5Ni00ZjlkLTk5ZjgtNjM3NWE4YzA3Nzk3XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_SX300.jpg",
+          "title": "Fight Club"
+        },
+        "slug": "fight-club",
+        "runtime": "139 min",
+        "released": "15 Oct 1999",
+        "genres": [
+          "Drama"
+        ],
+        "budget": 37030102
+      },
+      "visitedTime": "2024-07-28T12:54:27.527Z"
+    },
+    {
+      "id": "7e64",
+      "movie": {
+        "id": "tt0050083",
+        "title": "12 Angry Men",
+        "popularity": "9.0",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BMWU4N2FjNzYtNTVkNC00NzQ0LTg0MjAtYTJlMjFhNGUxZDFmXkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_SX300.jpg",
+          "title": "12 Angry Men"
+        },
+        "slug": "12-angry-men",
+        "runtime": "96 min",
+        "released": "10 Apr 1957",
+        "genres": [
+          "Crime",
+          "Drama"
+        ],
+        "budget": null
+      },
+      "visitedTime": "2024-07-28T13:01:40.315Z"
+    },
+    {
+      "id": "d50f",
+      "movie": {
+        "id": "tt0108052",
+        "title": "Schindler's List",
+        "popularity": "8.9",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BNDE4OTMxMTctNmRhYy00NWE2LTg3YzItYTk3M2UwOTU5Njg4XkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg",
+          "title": "Schindler's List"
+        },
+        "slug": "schindlers-list",
+        "runtime": "195 min",
+        "released": "04 Feb 1994",
+        "genres": [
+          "Biography",
+          "Drama",
+          "History"
+        ],
+        "budget": 96898818
+      },
+      "visitedTime": "2024-07-28T13:08:52.050Z"
+    },
+    {
+      "id": "8219",
+      "movie": {
+        "id": "tt0468569",
+        "title": "The Dark Knight",
+        "popularity": "9.1",
+        "image": {
+          "url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg",
+          "title": "The Dark Knight"
+        },
+        "slug": "the-dark-knight",
+        "runtime": "152 min",
+        "released": "18 Jul 2008",
+        "genres": [
+          "Action",
+          "Crime",
+          "Drama"
+        ],
+        "budget": 534987076
+      },
+      "visitedTime": "2024-07-28T13:08:59.870Z"
+    }
+  ]
+}

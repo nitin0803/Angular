@@ -1,5 +1,5 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { MovieState, initialState } from "./state.types";
+import { MovieState, VisitedMovie, initialState } from "./state.types";
 import { stateActions } from "./state.actions";
 import { Movie } from "../client/movie.model";
 
@@ -18,16 +18,18 @@ const internalReducer = createReducer(
             ...state,
             allMovies: [],
             filteredMovies: [],
-            errorMessage: "Can not load movies data! Sorry,Please Try Again!"
+            loadMoviesErrorMessage: "Can not load movies data! Sorry,Please Try Again!"
         }
     }),
     on(stateActions.loadMovieSuccess, (state, action) => {
-        const visitedMovie = action.allMovies.find(am => am.slug === action.slug) ?? undefined;
+        const movieBySlug = action.allMovies.find(am => am.slug === action.slug) ?? undefined;
         let visitedMovies = [...state.visitedMovies];
-        if (visitedMovie !== undefined) {
-            let updatedVisitedMovies = [...state.visitedMovies].filter(vm => vm.movie.slug !== action.slug);
-            updatedVisitedMovies.push( { movie: visitedMovie, visitedTime: new Date()});
-            visitedMovies = updatedVisitedMovies;
+        let visitedMovie: VisitedMovie | undefined;
+        if (movieBySlug !== undefined) {
+            visitedMovie = {
+                movie: movieBySlug,
+                visitedTime: new Date()
+            }
         }
         return {
             ...state,
@@ -36,6 +38,19 @@ const internalReducer = createReducer(
             visitedMovies,
         }
     }),
+    on(stateActions.getVisitedMoviesSuccess, (state, action) => {
+        return {
+            ...state,
+            loadVisitedMoviesErrorMesssage: null,
+            visitedMovies: action.visitedMovies
+        }
+    }),
+    on(stateActions.getVisitedMoviesFailed, (state) => {
+        return {
+            ...state,
+            loadVisitedMoviesErrorMesssage: "Sorry, Can not load last visited movies! "
+        }
+    })
 );
 
 function getFilteredMovies(allMovies: Movie[], searchTerm: string, genres: string[]) {

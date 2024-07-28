@@ -1,5 +1,8 @@
 import { Movie } from "../client/movie.model";
 
+export interface VisitedMovies {
+    visitedMovies: VisitedMovie[]
+}
 
 export interface VisitedMovie {
     movie: Movie,
@@ -9,9 +12,10 @@ export interface VisitedMovie {
 export interface MovieState {
     allMovies: Movie[],
     filteredMovies: Movie[],
-    visitedMovie: Movie | undefined,
+    visitedMovie: VisitedMovie | undefined,
     visitedMovies: VisitedMovie[];
-    errorMessage: string | null,
+    loadMoviesErrorMessage: string | null,
+    loadVisitedMoviesErrorMesssage: string| null,
 }
 
 export const initialState: MovieState = {
@@ -19,5 +23,6 @@ export const initialState: MovieState = {
     filteredMovies: [],
     visitedMovie: undefined,
     visitedMovies: [],
-    errorMessage: null,
+    loadMoviesErrorMessage: null,
+    loadVisitedMoviesErrorMesssage: null,
 }

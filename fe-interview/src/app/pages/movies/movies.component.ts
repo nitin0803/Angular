@@ -5,7 +5,7 @@ import { Subscription } from 'rxjs';
 import { map, distinctUntilChanged, debounceTime } from 'rxjs';
 import { Movie } from 'src/app/shared';
 import { stateActions } from 'src/app/shared/state/state.actions';
-import { selectErrorMessage, selectFilteredMovies, selectMovieState } from 'src/app/shared/state/state.selectors';
+import { selectLoadMoviesErrorMessage, selectFilteredMovies, selectMovieState } from 'src/app/shared/state/state.selectors';
 import { MovieState } from 'src/app/shared/state/state.types';
 import { MoviesForm } from './movies.component.types';
 import { MatOption, MatSelect } from '@angular/material/select';
@@ -20,7 +20,7 @@ import { getMovieUrl } from 'src/app/shared/utils';
 })
 export class MoviesComponent implements OnInit {
 	movies$ = this.store.select(selectFilteredMovies);
-	errorMessage$ = this.store.select(selectErrorMessage);
+	errorMessage$ = this.store.select(selectLoadMoviesErrorMessage);
 
 	readonly form: FormGroup<MoviesForm>;
 	genresList: string[];

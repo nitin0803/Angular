@@ -3,8 +3,9 @@ import { Observable } from 'rxjs';
 import { VisitedMovie } from '../state/state.types';
 import { Store } from '@ngrx/store';
 import { AppState } from '../state/app.state';
-import { selectLastVisitedMovies } from '../state/state.selectors';
+import { selectLastVisitedMovies, selectLoadVisitedMoviesErrorMesssage } from '../state/state.selectors';
 import { getMovieUrl } from '../utils';
+import { stateActions } from '../state/state.actions';
 
 @Component({
   selector: 'app-visits',
@@ -13,14 +14,15 @@ import { getMovieUrl } from '../utils';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class VisitsComponent implements OnInit {
-  viewModel$: Observable<VisitedMovie[]> | undefined;
+  viewModel$ = this.store.select(selectLastVisitedMovies);
+  errorMessage$ = this.store.select(selectLoadVisitedMoviesErrorMesssage);
 
   constructor(private store: Store<AppState>) {
   }
-  ngOnInit(): void {
-    this.viewModel$ = this.store.select(selectLastVisitedMovies);
-  }
 
+  ngOnInit(): void {
+    this.store.dispatch(stateActions.getVisitedMovies());
+  }
 
   getMovieUrl(visitedMovie: VisitedMovie) {
     return getMovieUrl(visitedMovie.movie.slug);

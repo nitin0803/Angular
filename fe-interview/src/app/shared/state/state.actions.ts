@@ -1,5 +1,6 @@
 import { createActionGroup, emptyProps, props } from "@ngrx/store";
 import { Movie } from "../client/movie.model";
+import { VisitedMovie } from "./state.types";
 
 export const stateActions = createActionGroup({
     source: 'Movies Mini Application',
@@ -10,6 +11,14 @@ export const stateActions = createActionGroup({
         loadMoviesFailed: emptyProps(),
 
         loadMovie: props<{ slug: string }>(),
-        loadMovieSuccess: props<{ allMovies: Movie[], slug: string }>()
+        loadMovieSuccess: props<{ allMovies: Movie[], slug: string }>(),
+
+        saveVisitedMovie: emptyProps(),
+        saveVisitedMovieSuccess: emptyProps(),
+        saveVisitedMovieFailed: emptyProps(),
+
+        getVisitedMovies: emptyProps(),
+        getVisitedMoviesSuccess: props<{ visitedMovies: VisitedMovie[] }>(),
+        getVisitedMoviesFailed: emptyProps(),
     },
 });
